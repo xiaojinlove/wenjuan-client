@@ -1,6 +1,10 @@
 import Head from "next/head"
 
-export default function About() {
+type PropsType = {
+  info: string
+}
+
+export default function About(props: PropsType) {
   return <>
       <Head>
         <title>Next.js About</title>
@@ -10,6 +14,19 @@ export default function About() {
       </Head>
       <main>
         <h1>About page</h1>
+        <p>{props.info}</p>
       </main>
   </>
+}
+
+export async function getStaticProps() {
+  // 可以 await 异步请求
+
+  console.log('只在build构建时执行') //线上环境下，每次请求（刷新）不会再执行
+
+  return {
+    props: {
+      info: '请求来的数据 hello world'
+    }
+  }
 }
