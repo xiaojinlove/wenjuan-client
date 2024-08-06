@@ -1,3 +1,4 @@
+import QuestionInput from "@/components/QuestionComponents/QuestionInput"
 import Head from "next/head"
 
 type PropsType = {
@@ -15,6 +16,10 @@ export default function Question(props: PropsType) {
       <main>
         <h1>Question page</h1>
         <p>{props.id}</p>
+
+        <form>
+          <QuestionInput fe_id="c1" props={{title: '你的姓名', placeholder: '请输入姓名'}}/>
+        </form>
       </main>
   </>
 }
