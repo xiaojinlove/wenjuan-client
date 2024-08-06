@@ -19,14 +19,24 @@ export default function About(props: PropsType) {
   </>
 }
 
-export async function getStaticProps() {
-  // 可以 await 异步请求
+// export async function getStaticProps() {
+//   // 可以 await 异步请求
 
-  console.log('只在build构建时执行') //线上环境下，每次请求（刷新）不会再执行
+//   console.log('只在build构建时执行') //线上环境下，每次请求（刷新）不会再执行
+
+//   return {
+//     props: {
+//       info: '请求来的数据 hello world'
+//     }
+//   }
+// }
+
+export async function getServerSideProps() {
+  console.log('每次请求都会执行') 
 
   return {
     props: {
-      info: '请求来的数据 hello world'
+      info: '请求来的数据 100'
     }
   }
 }
