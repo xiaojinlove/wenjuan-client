@@ -1,4 +1,5 @@
 import QuestionInput from "@/components/QuestionComponents/QuestionInput"
+import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
 import Head from "next/head"
 
 type PropsType = {
@@ -18,7 +19,16 @@ export default function Question(props: PropsType) {
         <p>{props.id}</p>
 
         <form>
-          <QuestionInput fe_id="c1" props={{title: '你的姓名', placeholder: '请输入姓名'}}/>
+          <QuestionInput fe_id="c1" props={{ title: '你的姓名', placeholder: '请输入姓名' }}/>
+          <QuestionRadio fe_id="c2" props={{ 
+            title: '你的性别',
+            options: [
+              { value: 'male', text: '男' },
+              { value: 'female', text: '女' }
+            ],
+            value: 'male',
+            isVertical: false
+          }} />
         </form>
       </main>
   </>
