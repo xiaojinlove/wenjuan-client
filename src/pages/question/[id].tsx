@@ -16,7 +16,7 @@ export default function Question(props: PropsType) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <form>
+        <form method="post" action="/api/answer">
           <input type="hidden" name="questionId" defaultValue={props.id} />
           <div className={styles.componentWrapper}>
             <QuestionInput fe_id="c1" props={{ title: '你的姓名', placeholder: '请输入姓名' }}/>
