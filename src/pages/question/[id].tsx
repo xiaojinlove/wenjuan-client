@@ -1,7 +1,7 @@
 import QuestionInput from "@/components/QuestionComponents/QuestionInput"
 import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
-import Head from "next/head"
 import styles from '../../styles/Question.module.scss'
+import PageWrapper from "@/components/PageWrapper"
 
 type PropsType = {
   id: string
@@ -9,13 +9,7 @@ type PropsType = {
 
 export default function Question(props: PropsType) {
   return <>
-      <Head>
-        <title>Question</title>
-        <meta name="description" content="question page" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
+      <PageWrapper title="question">
         <form method="post" action="/api/answer">
           <input type="hidden" name="questionId" defaultValue={props.id} />
           <div className={styles.componentWrapper}>
@@ -37,7 +31,7 @@ export default function Question(props: PropsType) {
             <button type="submit">提交</button>
           </div>
         </form>
-      </main>
+      </PageWrapper>
   </>
 }
 
