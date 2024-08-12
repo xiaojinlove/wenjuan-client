@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './QuestionCheckbox.module.scss'
 
 type PropsType = {
@@ -16,8 +16,28 @@ type PropsType = {
 const QuestionCheckbox: FC<PropsType> = ({ fe_id, props }) => {
   const { title, list = [], isVertical } = props
 
+  const [selectedValues, setSelectedValues] = useState<string[]>([])
+
+  useEffect(() => {
+    list.forEach(item => {
+      const { value, checked } = item
+      if (checked) {
+        setSelectedValues(selectedValues => selectedValues.concat(value))
+      }
+    })
+  }, [list])
+  function toggleChecked(value: string) {
+    if (selectedValues.includes(value)) {
+      setSelectedValues(selectedValues => selectedValues.filter(v => v !== value))
+    } else {
+      setSelectedValues(selectedValues.concat(value))
+    }
+  }
   return <>
     <p>{title}</p>
+
+    <input type='hidden' name={fe_id} value={selectedValues.toString()} />
+
     <ul className={styles.list}>
       {list.map(item => {
         const { value, text , checked} = item
@@ -29,7 +49,11 @@ const QuestionCheckbox: FC<PropsType> = ({ fe_id, props }) => {
 
         return <li key={value} className={liClassName}>
           <label>
-            <input type='checkbox' name={fe_id} checked={checked} />
+            <input 
+              type='checkbox' 
+              checked={selectedValues.includes(value)} 
+              onChange={() => toggleChecked(value)} 
+            />
             {text}
           </label>
         </li>

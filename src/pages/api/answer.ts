@@ -28,7 +28,7 @@ export default async function handler(
 
   // 获取并格式化表单数据
   const answerInfo = genAnswerInfo(req.body)
-  // console.log('answerInfo', answerInfo)
+  console.log('answerInfo', answerInfo)
   
   try {
     // 提交到服务端 Mock
