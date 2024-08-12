@@ -2,6 +2,7 @@ import QuestionInfo from "./QuestionInfo"
 import QuestionInput from "./QuestionInput"
 import QuestionParagraph from "./QuestionParagraph"
 import QuestionRadio from "./QuestionRadio"
+import QuestionTextarea from "./QuestionTextarea"
 import QuestionTitle from "./QuestionTitle"
 
 type ComponentInfoType = {
@@ -34,6 +35,10 @@ export const getComponent = (comp: ComponentInfoType) => {
 
   if (type === 'questionInfo') {
     return <QuestionInfo {...props} />
+  }
+
+  if (type === 'questionTextarea') {
+    return <QuestionTextarea fe_id={fe_id} props={props} />
   }
 
   return null
